@@ -40,9 +40,9 @@ var gulp = require('gulp'), //基础库
         filename: 'co',
         jsFiles: [
             'libs/iscroll.js',
-            'src/co-modules/js/co.js',
             'src/co-modules/js/zepto.extend.js',
             'src/co-modules/js/$extend.js',
+            'src/co-modules/js/co.js',
             'src/co-modules/js/widgets/slider/slider.js',
             'src/co-modules/js/widgets/slider/touch.js',
             'src/co-modules/js/widgets/slider/guide.js',
@@ -65,7 +65,7 @@ var gulp = require('gulp'), //基础库
         ]
     },
     zepto = {
-        filename: 'zepto',
+        filename: 'dom',
         jsFiles: [
             'zepto/zepto.js',
             'zepto/plugins/event.js',
@@ -77,7 +77,7 @@ var gulp = require('gulp'), //基础库
             'zepto/plugins/detect.js',
             'zepto/plugins/touch.js',
             'zepto/plugins/matchMedia.js',
-            'zepto/plugins/ex-ortchange.js',
+            'zepto/plugins/ex-ortchange.js'
         ]
     },
     banner = {

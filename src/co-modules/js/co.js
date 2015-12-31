@@ -2,7 +2,8 @@
 	/*===============================================================================
 	************   co start   ************
 	===============================================================================*/
-;(function(global, $, undefined) {
+;
+(function(global, $, undefined) {
 	var co = global.co = {
 			// The current version of co.js being used
 			version: "1.0.1",
@@ -193,41 +194,42 @@
 		return widget;
 	}
 
-	var domReady = function(factory) {
-		if ($.isFunction(factory)) {
-
-			if (($.os.android || $.os.ios) && co.plus) {
-				setTimeout(function() {
-					if (domReady.isReady) {
-						factory.call(global,require);
-					} else {
-						setTimeout(arguments.callee, 1);
-					}
-				}, 1);
-			} else {
-				factory.call(global,require);
-			}
-
-			$(document).find('.ui-action-back').button(function(evt) {
-				window.history.back()
-			})
+	if (($.os.android || $.os.ios)) {
+		if (($.os.ios) && window.app && window.app.isFullScreen()) {
+			$(document.body).addClass('ui-ios7');
 		}
-	};
+	}
 
-	co.plus = !!global['rd'];
-	global.onLoad = function() {
-		domReady.isReady = true;
-		co.plus = !!global['rd'];
-	};
+	$(document).find('.ui-action-back').button(function(evt) {
+		if (window.app) {
+			window.app.currentView().back();
+		} else if (window.rd) {
+			window.rd.window.closeSelf();
+		} else {
+			window.history.back()
+		}
+	})
 
 	$.fn.ready = function(callback) {
-		if (readyRE.test(document.readyState) && document.body) domReady(callback);
+		if (readyRE.test(document.readyState) && document.body) global.domReady(callback);
 		else document.addEventListener('DOMContentLoaded', function() {
-			domReady(callback)
+			global.domReady(callback)
 		}, false)
 		return this
 	};
-
-	global.domReady = domReady;
+	if (global.domReady) {
+		var domReady = global.domReady;
+		global.domReady = function(factory) {
+			if ($.isFunction(factory)) {
+				domReady.call(global, factory, require);
+			}
+		};
+	} else {
+		global.domReady = function(factory) {
+			if ($.isFunction(factory)) {
+				factory.call(global, require);
+			}
+		};
+	}
 	global.define = define;
 })(this, $);
