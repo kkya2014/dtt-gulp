@@ -6664,6 +6664,10 @@ html:not(.watch-active-state) .ui-accordion-list .ui-accordion-list-item-link:ac
   transition-duration: 300ms;
   cursor: pointer;
 }
+.ui-searchbar-cancel {
+  text-decoration: none;
+  color: #007aff;
+}
 .ui-searchbar-container .ui-searchbar-cancel {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;

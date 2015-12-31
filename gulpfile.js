@@ -17,7 +17,6 @@ var gulp = require('gulp'), //基础库
             root: 'examples/dist/',
             styles: 'examples/dist/css/',
             scripts: 'examples/dist/js/',
-            libs: 'examples/dist/js/libs/',
             ui: 'examples/dist/js/ui/'
         },
         co: {
@@ -28,8 +27,7 @@ var gulp = require('gulp'), //基础库
         source: {
             root: 'src/co-modules/',
             styles: 'src/co-modules/less/',
-            scripts: 'src/co-modules/js/',
-            libs: 'libs/'
+            scripts: 'src/co-modules/js/'
         },
         examples: {
             root: 'examples/',
@@ -65,7 +63,7 @@ var gulp = require('gulp'), //基础库
         ]
     },
     zepto = {
-        filename: 'dom',
+        filename: 'zepto',
         jsFiles: [
             'zepto/zepto.js',
             'zepto/plugins/event.js',
@@ -227,7 +225,7 @@ gulp.task('dist-styles', gulp.series('cleanDist', 'dist-css', 'dist-font'));
 
 
 // js处理
-gulp.task('dist-scripts', function(cb) {
+gulp.task('dist-co', function(cb) {
     gulp.src(co.jsFiles) //要合并的文件
         .pipe(concat(co.filename + ".js")) // 合并匹配到的js文件并命名为 "all.js"
         .pipe(gulp.dest(paths.dist.scripts))
@@ -260,7 +258,7 @@ gulp.task('dist-zepto', function(cb) {
 
 
 
-gulp.task('dist-js', gulp.series('dist-scripts', 'dist-zepto'));
+gulp.task('dist-js', gulp.series('dist-co', 'dist-zepto'));
 
 gulp.task('build-dist', gulp.series('dist-styles', 'dist-js'));
 
