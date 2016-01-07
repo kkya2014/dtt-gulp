@@ -16,13 +16,6 @@
 	var REQUIRE_RE = /"(?:\\"|[^"])*"|'(?:\\'|[^'])*'|\/\*[\S\s]*?\*\/|\/(?:\\\/|[^\/\r\n])+\/(?=[^\/])|\/\/.*|\.\s*require|(?:^|[^$])\brequire\s*\(\s*(["'])(.+?)\1\s*\)/g
 	var SLASH_RE = /\\\\/g
 
-	if (($.os.android || $.os.ios)) {
-		// if (($.os.ios) && rd.app.isFullScreen()) {
-		if ($.os.ios) {
-			$(document.body).addClass('ui-ios7');
-		}
-	}
-
 	var getWidget = function(name) {
 		return $ui.widgets[name]
 	};

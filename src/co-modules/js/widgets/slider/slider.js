@@ -138,12 +138,15 @@
         if ((width = _sl.ref.width()) === _sl.width) {
             return;
         }
+        _sl._container.css('display', 'block');
         if (opts.fullPage) {
             $(document.body).css('position', 'absolute');
             _sl.height = $(document.body).height();
         } else {
             if (opts.heightTarget == 'parent') {
                 _sl.height = _sl.ref.parent().height();
+            }else if (opts.heightTarget == 'img') {
+                _sl.height = _sl._pages.find(SELECTOR_SLIDER_IMG).height();
             } else {
                 _sl.height = _sl.ref.height();
             }
@@ -154,7 +157,6 @@
         _sl._pages.find(SELECTOR_SLIDER_IMG).height(_sl.height);
         _sl.width = width;
         _sl.arrange();
-        _sl._container.css('display', 'block');
         _sl.ref.find(SELECTOR_SLIDER_DOTS).css('display', 'block');
         _sl.ref.trigger('hiChange');
         _sl.loading.remove();
