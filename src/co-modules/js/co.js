@@ -193,15 +193,17 @@
 		}
 	}
 
-	$(document).find('.ui-action-back').button(function(evt) {
-		if (window.app) {
-			window.app.currentView().back();
-		} else if (window.rd) {
-			window.rd.window.closeSelf();
-		} else {
-			window.history.back()
-		}
-	})
+	setTimeout(function() {
+		$(document).find('.ui-action-back').button(function(evt) {
+			if (window.app) {
+				window.app.currentView().back();
+			} else if (window.rd) {
+				window.rd.window.closeSelf();
+			} else {
+				window.history.back()
+			}
+		})
+	}, 100);
 
 	$.fn.ready = function(callback) {
 		if (readyRE.test(document.readyState) && document.body) global.domReady(callback);

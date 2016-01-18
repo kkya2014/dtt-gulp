@@ -1,7 +1,8 @@
 /**
  * @file 图片轮播组件
  */
-;(function() {
+;
+(function() {
 
     var cssPrefix = $.fx.cssPrefix,
         transitionEnd = $.fx.transitionEnd;
@@ -145,7 +146,7 @@
         } else {
             if (opts.heightTarget == 'parent') {
                 _sl.height = _sl.ref.parent().height();
-            }else if (opts.heightTarget == 'img') {
+            } else if (opts.heightTarget == 'img') {
                 _sl.height = _sl._pages.find(SELECTOR_SLIDER_IMG).height();
             } else {
                 _sl.height = _sl.ref.height();
@@ -223,6 +224,7 @@
              * @namespace options
              */
             gestur: false,
+            touch:true,
             /**
              * @property {Number} [mulViewNum=2] 当slider为multiview模式时，用来指定一页显示多少个图片。
              * @namespace options
@@ -271,9 +273,12 @@
             }
 
             //加載觸摸按鈕
-            _sl.register('sTouch', function(st) {
-                st.call(_sl);
-            });
+            if (opts.touch) {
+                _sl.register('sTouch', function(st) {
+                    st.call(_sl);
+                });
+            }
+
             if (opts.guide) {
                 _sl.register('sGuide', function(sg) {
                     sg.call(_sl);
