@@ -3022,13 +3022,6 @@
 	var REQUIRE_RE = /"(?:\\"|[^"])*"|'(?:\\'|[^'])*'|\/\*[\S\s]*?\*\/|\/(?:\\\/|[^\/\r\n])+\/(?=[^\/])|\/\/.*|\.\s*require|(?:^|[^$])\brequire\s*\(\s*(["'])(.+?)\1\s*\)/g
 	var SLASH_RE = /\\\\/g
 
-	if (($.os.android || $.os.ios)) {
-		// if (($.os.ios) && rd.app.isFullScreen()) {
-		if ($.os.ios) {
-			$(document.body).addClass('ui-ios7');
-		}
-	}
-
 	var getWidget = function(name) {
 		return $ui.widgets[name]
 	};
@@ -3206,15 +3199,17 @@
 		}
 	}
 
-	$(document).find('.ui-action-back').button(function(evt) {
-		if (window.app) {
-			window.app.currentView().back();
-		} else if (window.rd) {
-			window.rd.window.closeSelf();
-		} else {
-			window.history.back()
-		}
-	})
+	setTimeout(function() {
+		$(document).find('.ui-action-back').button(function(evt) {
+			if (window.app) {
+				window.app.currentView().back();
+			} else if (window.rd) {
+				window.rd.window.closeSelf();
+			} else {
+				window.history.back()
+			}
+		})
+	}, 100);
 
 	$.fn.ready = function(callback) {
 		if (readyRE.test(document.readyState) && document.body) global.domReady(callback);
@@ -3242,7 +3237,8 @@
 /**
  * @file 图片轮播组件
  */
-;(function() {
+;
+(function() {
 
     var cssPrefix = $.fx.cssPrefix,
         transitionEnd = $.fx.transitionEnd;
@@ -3379,12 +3375,15 @@
         if ((width = _sl.ref.width()) === _sl.width) {
             return;
         }
+        _sl._container.css('display', 'block');
         if (opts.fullPage) {
             $(document.body).css('position', 'absolute');
             _sl.height = $(document.body).height();
         } else {
             if (opts.heightTarget == 'parent') {
                 _sl.height = _sl.ref.parent().height();
+            } else if (opts.heightTarget == 'img') {
+                _sl.height = _sl._pages.find(SELECTOR_SLIDER_IMG).height();
             } else {
                 _sl.height = _sl.ref.height();
             }
@@ -3395,7 +3394,6 @@
         _sl._pages.find(SELECTOR_SLIDER_IMG).height(_sl.height);
         _sl.width = width;
         _sl.arrange();
-        _sl._container.css('display', 'block');
         _sl.ref.find(SELECTOR_SLIDER_DOTS).css('display', 'block');
         _sl.ref.trigger('hiChange');
         _sl.loading.remove();
@@ -3462,6 +3460,7 @@
              * @namespace options
              */
             gestur: false,
+            touch:true,
             /**
              * @property {Number} [mulViewNum=2] 当slider为multiview模式时，用来指定一页显示多少个图片。
              * @namespace options
@@ -3510,9 +3509,12 @@
             }
 
             //加載觸摸按鈕
-            _sl.register('sTouch', function(st) {
-                st.call(_sl);
-            });
+            if (opts.touch) {
+                _sl.register('sTouch', function(st) {
+                    st.call(_sl);
+                });
+            }
+
             if (opts.guide) {
                 _sl.register('sGuide', function(sg) {
                     sg.call(_sl);
@@ -4636,9 +4638,9 @@
     var defDots = '<p class="' + CLASS_FULLPAGE_DOTS + '"><%= new Array( len + 1 )' +
         '.join("<i></i>") %></p>';
 
-    $(document).on('touchmove', function(e) {
-        e.preventDefault();
-    });
+    // $(document).on('touchmove', function(e) {
+    //     e.preventDefault();
+    // });
     //渲染组件
     var render = function() {
         var _fp = this,
