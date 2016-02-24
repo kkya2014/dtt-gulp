@@ -103,6 +103,10 @@ gulp.task('cleanCo', function(cb) {
     gulp.src([paths.co.root], {
             read: false
         })
+        .on('error', function(err) {
+            console.log(err);
+            this.end();
+        })
         .pipe(clean())
         .on('finish', function() {
             cb();
@@ -185,6 +189,10 @@ gulp.task('build-co', gulp.series('cleanCo', 'co-scripts', 'co-zepto', 'co-css',
 gulp.task('cleanDist', function(cb) {
     gulp.src([paths.dist.root], {
             read: false
+        })
+        .on('error', function(err) {
+            console.log(err);
+            this.end();
         })
         .pipe(clean())
         .on('finish', function() {
