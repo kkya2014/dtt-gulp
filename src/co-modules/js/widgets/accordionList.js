@@ -19,8 +19,8 @@
         SELECTOR_ACCORDION_LIST_ITEM_EXPANDED = '.' + CLASS_ACCORDION_LIST_ITEM_EXPANDED,
         SELECTOR_ACCORDION_LIST_ITEM_LINK = '.' + CLASS_ACCORDION_LIST_ITEM_LINK,
         SELECTOR_ACCORDION_LIST_ITEM_CONTENT = '.' + CLASS_ACCORDION_LIST_ITEM_CONTENT,
-        SELECTOR_ACCORDION_LIST_ITEM_INNER = '.' + CLASS_ACCORDION_LIST_ITEM_INNER
-    SELECTOR_ACCORDION_LIST_ITEM_TITLE = '.' + CLASS_ACCORDION_LIST_ITEM_TITLE;
+        SELECTOR_ACCORDION_LIST_ITEM_INNER = '.' + CLASS_ACCORDION_LIST_ITEM_INNER,
+        SELECTOR_ACCORDION_LIST_ITEM_TITLE = '.' + CLASS_ACCORDION_LIST_ITEM_TITLE;
 
     var render = function() {
         var _acd = this,
@@ -38,7 +38,7 @@
         var _acd = this,
             opts = _acd.opts;
         _acd.ref.on(_acd.touchEve(), function(evt) {
-            if ($(evt.target).is(SELECTOR_ACCORDION_LIST_ITEM_INNER) || $(evt.target).is(SELECTOR_ACCORDION_LIST_ITEM_TITLE) || $(evt.target).is(SELECTOR_ACCORDION_LIST_ITEM_LINK)) {
+            if ($(evt.target).parents(SELECTOR_ACCORDION_LIST_ITEM_LINK).length > 0 || $(evt.target).is(SELECTOR_ACCORDION_LIST_ITEM_LINK)) {
                 var accordionItem = $(evt.target).closest(SELECTOR_ACCORDION_LIST_ITEM);
                 _acd.accordionToggle(accordionItem);
             }
