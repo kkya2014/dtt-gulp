@@ -1,12 +1,7 @@
-/** co.js 1.0.1 * /
-	/*===============================================================================
-	************   co start   ************
-	===============================================================================*/
+
 ;
 (function(global, $, undefined) {
 	var co = {
-			// The current version of co.js being used
-			version: "1.0.1",
 			verticalSwipe: true //是否可以纵向滑动
 		},
 		$ui = {},
@@ -186,11 +181,6 @@
 		return widget;
 	}
 
-	if (($.os.android || $.os.ios)) {
-		if (($.os.ios) && window.app && window.app.isFullScreen()) {
-			$(document.body).addClass('ui-ios7');
-		}
-	}
 
 	setTimeout(function() {
 		$(document).find('.ui-action-back').button(function(evt) {
@@ -225,6 +215,7 @@
 			}
 		};
 	}
+
 	global.define = define;
 	global.co = co;
 })(this, $);

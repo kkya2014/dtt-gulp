@@ -3004,15 +3004,10 @@
 /*/*===============================================================================
 ************   $ dateFormat end  ************
 ===============================================================================*/
-/** co.js 1.0.1 * /
-	/*===============================================================================
-	************   co start   ************
-	===============================================================================*/
+
 ;
 (function(global, $, undefined) {
 	var co = {
-			// The current version of co.js being used
-			version: "1.0.1",
 			verticalSwipe: true //是否可以纵向滑动
 		},
 		$ui = {},
@@ -3192,11 +3187,6 @@
 		return widget;
 	}
 
-	if (($.os.android || $.os.ios)) {
-		if (($.os.ios) && window.app && window.app.isFullScreen()) {
-			$(document.body).addClass('ui-ios7');
-		}
-	}
 
 	setTimeout(function() {
 		$(document).find('.ui-action-back').button(function(evt) {
@@ -3231,6 +3221,7 @@
 			}
 		};
 	}
+
 	global.define = define;
 	global.co = co;
 })(this, $);
@@ -7702,6 +7693,8 @@
  */
 
 ;(function() {
+
+    // 私有变量  
     var CLASS_TAB_BAR = 'ui-tab-bar',
         CLASS_TAB_ITEM = 'ui-tab-item',
         CLASS_ACTIVE = 'ui-active',
@@ -7709,6 +7702,13 @@
 
     var SELECTOR_ACTIVE = '.' + CLASS_ACTIVE;
 
+
+
+
+
+// 私有方法  
+
+// 渲染组件
     var render = function() {
         var _tb = this,
             opts = _tb.opts;
@@ -7718,6 +7718,7 @@
         opts.items[opts.active].actived = true;
     };
 
+// 绑定事件 
     var bind = function() {
         var _tb = this,
             opts = _tb.opts;
@@ -7729,10 +7730,15 @@
             }
         });
     };
+
+    
     /**
      * 选项卡组件
      */
     define(function($ui) {
+
+
+        // 对象定义  
         var $tabs = $ui.define('Tabs', {
 
             /**
@@ -7741,6 +7747,12 @@
              */
             active: 0
         });
+
+
+
+
+// 对象扩展对外接口  
+
 
         //初始化
         $tabs.prototype.init = function() {
@@ -7785,6 +7797,11 @@
         $tabs.prototype.destroy = function() {
 
         };
+
+
+
+        // 绑定到zepto对象上  供外部创建对象使用 
+
         //注册$插件
         $.fn.tab = function(opts) {
             var tabObjs = [];
