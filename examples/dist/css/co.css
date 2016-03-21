@@ -8,7 +8,9 @@ body {
   padding: 0;
   font-size: 14px;
   line-height: 1.4;
-  background-color: #efeff4;
+  background-color: #FFFFFF;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: none;
 }
 html,
 body,
@@ -104,6 +106,24 @@ input {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+select,
+textarea,
+input[type='text'],
+input[type='search'],
+input[type='password'],
+input[type='datetime'],
+input[type='datetime-local'],
+input[type='date'],
+input[type='month'],
+input[type='time'],
+input[type='week'],
+input[type='number'],
+input[type='email'],
+input[type='url'],
+input[type='tel'],
+input[type='color'] {
+  -webkit-user-select: text;
 }
 /* === badge === */
 .ui-badge {
@@ -5117,6 +5137,8 @@ input[type="submit"].ui-active:enabled,
   z-index: 500;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  -webkit-box-shadow: 0px 1px 6px #CCC;
+  box-shadow: 0px 1px 6px #CCC;
 }
 .ui-nav-bar a {
   outline: 0;

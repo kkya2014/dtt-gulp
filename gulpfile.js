@@ -10,14 +10,15 @@ var gulp = require('gulp'), //基础库
     rename = require('gulp-rename'), //重命名
     clean = require('gulp-clean'), //清空文件夹
     open = require('gulp-open'),
+    del = require('del'),
+    mkdirp = require('mkdirp'),
     livereload = require('gulp-livereload'), //livereload
     paths = {
         root: './',
         dist: {
             root: 'examples/dist/',
             styles: 'examples/dist/css/',
-            scripts: 'examples/dist/js/',
-            ui: 'examples/dist/js/ui/'
+            scripts: 'examples/dist/js/'
         },
         co: {
             root: 'co/',
@@ -59,11 +60,11 @@ var gulp = require('gulp'), //基础库
             'src/co-modules/js/widgets/swipepage.js',
             'src/co-modules/js/widgets/switch.js',
             'src/co-modules/js/widgets/tabs.js'
-            
+
         ]
     },
     zepto = {
-        filename: 'zepto',
+        filename: 'dom',
         jsFiles: [
             'zepto/zepto.js',
             'zepto/plugins/event.js',
@@ -82,6 +83,9 @@ var gulp = require('gulp'), //基础库
         header: [
             '/**',
             ' * Released on: <%= date.year %>-<%= date.month %>-<%= date.day %>',
+            ' * =====================================================',
+            ' * <%= name %> v1.0.3 (http://docs.369cloud.com/engine/jssdk/JS-SDK)',
+            ' * =====================================================',
             ' */',
             ''
         ].join('\n'),
@@ -100,17 +104,7 @@ var gulp = require('gulp'), //基础库
 
 // 清空co
 gulp.task('cleanCo', function(cb) {
-    gulp.src([paths.co.root], {
-            read: false
-        })
-        .on('error', function(err) {
-            console.log(err);
-            this.end();
-        })
-        .pipe(clean())
-        .on('finish', function() {
-            cb();
-        });
+    return del([paths.co.root]);
 });
 
 //co脚本处理
@@ -118,15 +112,14 @@ gulp.task('co-scripts', function(cb) {
     gulp.src(co.jsFiles) //要合并的文件
         .pipe(concat(co.filename + ".js")) // 合并匹配到的js文件并命名为 "all.js"
         .pipe(header(banner.header, {
-            date: date
+            date: date,
+            name: 'Co'
         }))
         .pipe(gulp.dest(paths.co.scripts))
-        // .pipe(rename({
-        //     suffix: '.min'
-        // }))
         .pipe(uglify())
         .pipe(header(banner.header, {
-            date: date
+            date: date,
+            name: 'Co'
         }))
         .pipe(gulp.dest(paths.co.scripts))
         .on('finish', function() {
@@ -139,15 +132,14 @@ gulp.task('co-zepto', function(cb) {
     gulp.src(zepto.jsFiles) //要合并的文件
         .pipe(concat(zepto.filename + ".js")) // 合并匹配到的js文件并命名为 "all.js"
         .pipe(header(banner.header, {
-            date: date
+            date: date,
+            name: 'Dom'
         }))
         .pipe(gulp.dest(paths.co.scripts))
-        // .pipe(rename({
-        //     suffix: '.min'
-        // }))
         .pipe(uglify())
         .pipe(header(banner.header, {
-            date: date
+            date: date,
+            name: 'Dom'
         }))
         .pipe(gulp.dest(paths.co.scripts))
         .on('finish', function() {
@@ -165,7 +157,8 @@ gulp.task('co-css', function(cb) {
             aggressiveMerging: false,
         }))
         .pipe(header(banner.header, {
-            date: date
+            date: date,
+            name: 'Co'
         }))
         .pipe(gulp.dest(paths.co.styles))
         .on('finish', function() {
@@ -187,17 +180,7 @@ gulp.task('build-co', gulp.series('cleanCo', 'co-scripts', 'co-zepto', 'co-css',
 
 // 清空dist样式
 gulp.task('cleanDist', function(cb) {
-    gulp.src([paths.dist.root], {
-            read: false
-        })
-        .on('error', function(err) {
-            console.log(err);
-            this.end();
-        })
-        .pipe(clean())
-        .on('finish', function() {
-            cb();
-        });
+    return del([paths.dist.root]);
 });
 
 // dist样式处理
@@ -205,13 +188,6 @@ gulp.task('dist-css', function(cb) {
     gulp.src('src/co-modules/less/co.less')
         .pipe(less())
         .pipe(gulp.dest(paths.dist.styles))
-        // .pipe(rename({
-        //     suffix: '.min'
-        // }))
-        // .pipe(minifycss({
-        //     advanced: false,
-        //     aggressiveMerging: false,
-        // }))
         .pipe(gulp.dest(paths.dist.styles))
         .pipe(livereload())
         .on('end', function() {
@@ -237,10 +213,6 @@ gulp.task('dist-co', function(cb) {
     gulp.src(co.jsFiles) //要合并的文件
         .pipe(concat(co.filename + ".js")) // 合并匹配到的js文件并命名为 "all.js"
         .pipe(gulp.dest(paths.dist.scripts))
-        // .pipe(rename({
-        //     suffix: '.min'
-        // }))
-        // .pipe(uglify())
         .pipe(gulp.dest(paths.dist.scripts))
         .pipe(livereload())
         .on('end', function() {
@@ -253,10 +225,6 @@ gulp.task('dist-zepto', function(cb) {
     gulp.src(zepto.jsFiles) //要合并的文件
         .pipe(concat(zepto.filename + ".js")) // 合并匹配到的js文件并命名为 "all.js"
         .pipe(gulp.dest(paths.dist.scripts))
-        // .pipe(rename({
-        //     suffix: '.min'
-        // }))
-        // .pipe(uglify())
         .pipe(gulp.dest(paths.dist.scripts))
         .pipe(livereload())
         .on('end', function() {
@@ -304,3 +272,4 @@ gulp.task('open', function(cb) {
 });
 
 gulp.task('default', gulp.series('build', 'connect', 'open', 'watch'));
+// gulp.task('default', gulp.series('cleanCo'));
