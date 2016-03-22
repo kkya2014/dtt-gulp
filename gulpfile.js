@@ -33,6 +33,7 @@ var gulp = require('gulp'), //基础库
             scripts: 'assets/libs/',
             fonts: 'assets/fonts/'
         },
+        
         examples: {
             root: 'examples/',
             index: 'examples/index.html'
