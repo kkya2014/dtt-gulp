@@ -8,7 +8,7 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-		<link rel="stylesheet" href="dist/css/co.css">
+		<link rel="stylesheet" href="../dist/css/d6.css">
 	</head>
 		<style type="text/css">
 			.ui-list-block{
@@ -16,17 +16,25 @@
 			}
 		</style>
 	<body>
+		<header class="ui-nav-bar">
+	        <div class="ui-nav-bar-inner">
+	            <a class="ui-action-back ui-nav-bar-link">
+	                <i class="ui-nav-bar-icon ui-nav-bar-left ui-icon-left-nav"></i>
+	            </a>
+	            <h1 class="ui-nav-bar-title">Refresh</h1>
+	            <a class="ui-nav-bar-link"></a>
+	        </div>
+	    </header>
 		<!--下拉刷新容器-->
 		<div class="ui-list-block ui-media-list" id="refresh">
 	        <ul>
 
 	        </ul>
 	      </div>
-	    <script src="dist/js/zepto.js"></script>
-		<script src="dist/js/co.js"></script>
+	    <script src="../dist/js/zepto.js"></script>
+		<script src="../dist/js/d6.js"></script>
 		<script>
 			domReady(function(require){
-		        require("refresh");
 		        var re = $('#refresh').refresh( { 
 		            down: {
 						callback: pulldownRefresh
