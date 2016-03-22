@@ -4,7 +4,7 @@
     <title>Hello UI LazyLoadImage</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" href="dist/css/co.css">
+    <link rel="stylesheet" href="../dist/css/d6.css">
     <style type="text/css">
 .ui-lazy-loader {
     -webkit-box-sizing: border-box;
@@ -43,11 +43,10 @@
     <header class="ui-nav-bar">
         <div class="ui-nav-bar-inner">
             <a class="ui-action-back ui-nav-bar-link">
-                <i class="ui-nav-bar-icon ui-nav-bar-left ui-icon-left-nav"><span class="ui-nav-bar-des">Back</span>
-          </i>
+                <i class="ui-nav-bar-icon ui-nav-bar-left ui-icon-left-nav"></i>
             </a>
             <h1 class="ui-nav-bar-title">LazyLoadImage</h1>
-            <a class="ui-nav-bar-link"><i class="ui-nav-bar-icon ui-nav-bar-right ui-icon-bars"></i></a>
+            <a class="ui-nav-bar-link"></a>
         </div>
     </header>
     <div class="ui-lazy-loader-content loader-content ui-content">
@@ -73,13 +72,12 @@
                        
                         <div style='height:300px;' data-background="http://www.freeimages.co.uk/galleries/sports/relaxation/thumbs/beach_walk.jpg" class="ui-lazy"></div>
     </div> 
-        <script src="dist/js/zepto.js"></script>
-        <script src="dist/js/co.js"></script>
+        <script src="../dist/js/zepto.js"></script>
+        <script src="../dist/js/d6.js"></script>
 </body>
 <script>
 
     domReady(function(require){
-        require("lazyloadimage");
         $('.ui-lazy-loader').lazyloadimage();
     });
 </script>

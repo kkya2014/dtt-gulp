@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <link rel="stylesheet" href="dist/css/co.css">
+        <link rel="stylesheet" href="../dist/css/d6.css">
 
         <style>
 a {
@@ -230,13 +230,14 @@ a {
       </div>
     </div>
   </div>      
-    <script src="dist/js/zepto.js"></script>
-    <script src="dist/js/co.js"></script>
+    <script src="../dist/js/zepto.js"></script>
+    <script src="../dist/js/d6.js"></script>
     </body>
      <script>
             domReady(function(require){
-                require('searchbar');
-                $('.ui-searchbar').searchbar().enable();
+                $('.ui-searchbar').searchbar({
+                  cancel:'cancel'
+                })
                 $('.ui-searchbar').on('search',function(e,query,foundItems){
                     console.log(query);
                 })
