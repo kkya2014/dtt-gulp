@@ -61,12 +61,6 @@
         _sc._found = _sc._searchList;
         _sc._notFound = $(notFound).appendTo(_sc._content);
 
-        // Cancel button
-        _sc._cancelButton.transition(0).show();
-        _sc._cancelButton.css('margin-right', -_sc._cancelButton[0].offsetWidth + 'px');
-        setTimeout(function() {
-            _sc._cancelButton.transition('').hide();
-        }, 0);
     };
 
     //绑定事件
