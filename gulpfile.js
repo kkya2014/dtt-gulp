@@ -84,7 +84,7 @@ var gulp = require('gulp'), //基础库
             '/**',
             ' * Released on: <%= date.year %>-<%= date.month %>-<%= date.day %>',
             ' * =====================================================',
-            ' * <%= name %> v1.0.1 (https://github.com/369cloud/D6.git)',
+            ' * <%= name %> v1.0.1 (http://369cloud.github.io/D6)',
             ' * =====================================================',
             ' */',
             ''
