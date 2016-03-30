@@ -10,7 +10,7 @@
 		REQUIRE_RE = /"(?:\\"|[^"])*"|'(?:\\'|[^'])*'|\/\*[\S\s]*?\*\/|\/(?:\\\/|[^\/\r\n])+\/(?=[^\/])|\/\/.*|\.\s*require|(?:^|[^$])\brequire\s*\(\s*(["'])(.+?)\1\s*\)/g,
 		SLASH_RE = /\\\\/g;
 
-	var getWidget = function(name,ann) {
+	var getWidget = function(name) {
 		return $ui.widgets[name]
 	};
 
@@ -99,7 +99,7 @@
 		console.log(str);
 		return this;
 	};
-	
+
 	Base.stopPropagation = function(e) {
 		e.stopPropagation();
 		return this;
@@ -208,5 +208,6 @@
 	}
 
 	global.define = define;
+	
 	global.d6 = d6;
 })(this, $);
