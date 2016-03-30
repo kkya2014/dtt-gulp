@@ -99,16 +99,7 @@
 		console.log(str);
 		return this;
 	};
-	Base.callZ = (function() {
-		var instance = $();
-		instance.length = 1;
-
-		return function(item) {
-			instance[0] = item;
-			return instance;
-		};
-	})()
-
+	
 	Base.stopPropagation = function(e) {
 		e.stopPropagation();
 		return this;
@@ -693,7 +684,6 @@
 					this._execEvent('scroll');
 				}
 				if (Math.abs(360 * Math.atan(diff_y / diff_x) / (2 * Math.PI)) < 60) return;
-				// console.log(co.verticalSwipe);
 				if (!d6.verticalSwipe) return;
 			}
 
@@ -3337,8 +3327,8 @@
         var _sl = this,
             dots = _sl._dots;
 
-        typeof from === 'undefined' || _sl.callZ(dots[from % this.length]).removeClass(CLASS_STATE_ACTIVE);
-        _sl.callZ(dots[to % this.length]).addClass(CLASS_STATE_ACTIVE);
+        typeof from === 'undefined' || $(dots[from % this.length]).removeClass(CLASS_STATE_ACTIVE);
+        $(dots[to % this.length]).addClass(CLASS_STATE_ACTIVE);
     };
 
     var initDots = function() {
@@ -3825,7 +3815,7 @@
                 }
                 if(Math.abs(angle(touchesStart,touchesEnd)) > 30)return;
                 
-                co.verticalSwipe = false;
+                d6.verticalSwipe = false;
                 delta.x = touche.pageX - touchesStart.x;
                 delta.y = touche.pageY - touchesStart.y;
                 if ( typeof isScrolling === 'undefined' ) {
@@ -3862,7 +3852,7 @@
             };
 
         var sliderTonEnd = function() {
-                co.verticalSwipe = true;
+                d6.verticalSwipe = true;
                 var _sl = this,
                     opts = _sl.opts;
                 // 解除事件
@@ -4779,8 +4769,8 @@
     var updateDots = function(to, from) {
         var _fp = this,
             dots = _fp._dots;
-        typeof from === 'undefined' || _fp.callZ(dots[from % _fp.pagesLength]).removeClass(CLASS_STATE_ACTIVE);
-        _fp.callZ(dots[to % _fp.pagesLength]).addClass(CLASS_STATE_ACTIVE);
+        typeof from === 'undefined' || $(dots[from % _fp.pagesLength]).removeClass(CLASS_STATE_ACTIVE);
+        $(dots[to % _fp.pagesLength]).addClass(CLASS_STATE_ACTIVE);
     };
 
     var fix = function(cur, pagesLength, loop) {
