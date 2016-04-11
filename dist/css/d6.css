@@ -2428,8 +2428,8 @@ html.ios-gt-6.pixel-ratio-3 .ui-list-block li:last-child li .ui-list-item-inner:
   transform: translate3d(0, 0, 0);
 }
 .ui-accordion-item-content-android {
-  -webkit-transition-duration: 0ms;
-  transition-duration: 0ms;
+  -webkit-transition-duration: 10ms;
+  transition-duration: 10ms;
 }
 .ui-accordion .ui-accordion-item .ui-accordion-item-inner:after {
   position: absolute;
@@ -2549,8 +2549,8 @@ html:not(.watch-active-state) .ui-accordion .ui-accordion-item-link:active {
   transform: translate3d(0, 0, 0);
 }
 .ui-accordion-list-item-content-android {
-  -webkit-transition-duration: 0ms;
-  transition-duration: 0ms;
+  -webkit-transition-duration: 10ms;
+  transition-duration: 10ms;
 }
 .ui-accordion-list .ui-accordion-list-item .ui-accordion-list-item-inner:before {
   position: absolute;
