@@ -129,15 +129,6 @@ input[type='tel'],
 input[type='color'] {
   -webkit-user-select: text;
 }
-.ui-bg-blue {
-  background-color: #007aff;
-}
-.ui-bg-green {
-  background-color: #4cd964;
-}
-.ui-bg-orange {
-  background-color: #ff9500;
-}
 /* === badge === */
 .ui-badge {
   display: inline-block;
@@ -526,6 +517,58 @@ input[type='color'] {
   bottom: 0;
   left: 0;
   right: 0;
+}
+/* ---- 窗口（window）布局
+    <body class="d6-container">
+        <header class="d6-header">
+            糗事百科---
+        </header>
+        <section class="content">
+            
+        </section>
+        
+        <footer class="d6-footer">
+            自动撑开到底部，但是不固定
+        </footer>
+    </body>
+ ----- */
+/*
+ * flex 兼容性问题，比较多，旧版需要加上-webkit，且没有发布删除-webkit的版本
+ */
+.d6-container {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: box;
+  -webkit-box-orient: vertical;
+}
+.d6-content {
+  -webkit-box-flex: 1;
+  box-flex: 1;
+}
+/*
+ * 为header添加垂直居中，display：box的后，text-align:center；失效；
+ */
+.d6-header,
+.d6-footer {
+  display: -webkit-box;
+  -webkit-box-align: center;
+  /*垂直居中*/
+  -webkit-box-pack: center;
+  /*水平居中*/
+}
+/* 被d6-content 撑到底部的footer */
+.d6-footer {
+  width: 100%;
+  background-color: #f00;
+  height: 50px;
+}
+/* 被fixed到底部的footer */
+.d6-footer-fixed {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background-color: #f00;
+  height: 50px;
 }
 /* === card === */
 .card {
@@ -2221,6 +2264,18 @@ html.ios-gt-6.pixel-ratio-3 .ui-list-block li:last-child li .ui-list-item-inner:
   max-width: 42px;
   height: 42px;
   line-height: 42px;
+}
+.ui-list-block .ui-swipeout-actions-left span.ui-bg-blue,
+.ui-list-block .ui-swipeout-actions-right span.ui-bg-blue {
+  background-color: #007aff;
+}
+.ui-list-block .ui-swipeout-actions-left span.ui-bg-green,
+.ui-list-block .ui-swipeout-actions-right span.ui-bg-green {
+  background-color: #4cd964;
+}
+.ui-list-block .ui-swipeout-actions-left span.ui-bg-orange,
+.ui-list-block .ui-swipeout-actions-right span.ui-bg-orange {
+  background-color: #ff9500;
 }
 /* === navigator === */
 .ui-navigator {

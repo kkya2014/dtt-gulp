@@ -75,7 +75,7 @@
 	};
 
 	Base.touchEnd = function() {
-		return this.isTouchScreen() ? "touchend" : "mouseup"
+		return this.isTouchScreen() ? "touchend" : "mouseup mouseout"
 	};
 
 	Base.touchCancel = function() {
@@ -6771,6 +6771,7 @@
                 break;
             case 'touchend':
             case 'mouseup':
+            case 'mouseout':
                 handleTouchEnd.call(_sl, evt);
                 break;
         }
