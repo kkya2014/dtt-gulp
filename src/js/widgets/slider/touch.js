@@ -2,7 +2,7 @@
  * @file 图片轮播手指跟随插件
  * @import slider.js
  */
-;(function() {
+;(function($) {
     
     var isScrolling,
         touchesStart,
@@ -234,4 +234,4 @@
                     
             });
     } );
-})()
+})(Zepto)

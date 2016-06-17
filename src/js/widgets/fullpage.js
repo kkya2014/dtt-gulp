@@ -353,4 +353,4 @@
         };
 
     });
-})($, window);
+})(Zepto, window);

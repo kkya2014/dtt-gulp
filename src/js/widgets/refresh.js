@@ -2,7 +2,7 @@
  * @file refresh 组件
  */
 ;
-(function() {
+(function($) {
 
     var CLASS_PULL_TOP_POCKET = 'ui-pull-top-pocket';
     var CLASS_PULL_BOTTOM_POCKET = 'ui-pull-bottom-pocket';
@@ -432,4 +432,4 @@
         };
 
     });
-})();
+})(Zepto);

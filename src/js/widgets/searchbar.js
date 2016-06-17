@@ -2,7 +2,7 @@
  * @file searchbar组件
  */
 ;
-(function() {
+(function($) {
     var previousQuery = '',
         diacriticsMap = {};
 
@@ -542,4 +542,4 @@
         };
     */
     });
-})();
+})(Zepto);

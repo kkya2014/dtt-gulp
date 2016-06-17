@@ -2,7 +2,7 @@
  * @file navigator组件
  */
 
-;(function() {
+;(function($) {
     var CLASS_NAVIGATOR_LIST = 'ui-navigator-list',
         CLASS_NAVIGATOR = 'ui-navigator';
 
@@ -140,4 +140,4 @@
         };
 
     });
-})();
+})(Zepto);

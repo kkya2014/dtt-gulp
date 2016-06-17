@@ -172,4 +172,4 @@
         }
         return $(unique(children));
     }
-}($));
+}(Zepto));

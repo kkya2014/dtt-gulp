@@ -2,7 +2,7 @@
  * @file 选项卡组件
  */
 
-;(function() {
+;(function($) {
 
     // 私有变量  
     var CLASS_TAB_BAR = 'ui-tab-bar',
@@ -133,4 +133,4 @@
         };
 
     });
-})();
+})(Zepto);

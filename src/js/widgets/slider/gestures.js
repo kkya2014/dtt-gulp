@@ -1,7 +1,7 @@
 /**
  * @file 图片轮播手指缩放插件
  */
-;(function() {
+;(function($) {
     var bWidth,
         bHeight,
         bScrollLeft,
@@ -159,4 +159,4 @@
 
         });
     });
-})()
+})(Zepto)

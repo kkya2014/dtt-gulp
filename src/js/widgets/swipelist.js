@@ -2,7 +2,7 @@
  * @file 滑动列表组件
  */
 ;
-(function() {
+(function($) {
 
 
     var CLASS_SWIPEOUT = 'ui-swipeout',
@@ -439,4 +439,4 @@
         };
     */
     });
-})();
+})(Zepto);

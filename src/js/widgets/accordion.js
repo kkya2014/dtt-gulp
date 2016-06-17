@@ -1,7 +1,7 @@
 /**
  * @file accordion 组件
  */
-;(function() {
+;(function($) {
     var CLASS_ACCORDION_ITEM = 'ui-accordion-item',
         CLASS_ACCORDION_ITEM_EXPANDED = 'ui-accordion-item-expanded',
         CLASS_ACCORDION_ITEM_LINK = 'ui-accordion-item-link',
@@ -142,4 +142,4 @@
         };
     */
     });
-})();
+})(Zepto);

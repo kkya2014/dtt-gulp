@@ -1,7 +1,7 @@
 /**
  * @file switch组件
  */
-;(function() {
+;(function($) {
     var CLASS_SWITCH = 'ui-switch',
         CLASS_SWITCH_HANDLE = 'ui-switch-handle',
         CLASS_ACTIVE = 'ui-active',
@@ -192,4 +192,4 @@
             return switchObjs.length > 1 ? switchObjs : switchObjs[0];
         };
     });
-})();
+})(Zepto);

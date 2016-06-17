@@ -2,7 +2,7 @@
  * @file accordion-list 组件
  */
 ;
-(function() {
+(function($) {
     var CLASS_ACCORDION_LIST = 'ui-accordion-list',
         CLASS_ACCORDION_LIST_ITEM = 'ui-accordion-list-item',
         CLASS_ACCORDION_LIST_ITEM_EXPANDED = 'ui-accordion-list-item-expanded',
@@ -33,11 +33,6 @@
                 el.addClass(CLASS_ACCORDION_LIST_ITEM_EXTEND);
             }
         })
-        if($.os.ios){
-            _acd.ref.find(SELECTOR_ACCORDION_LIST_ITEM_CONTENT).addClass(CLASS_ACCORDION_LIST_ITEM_CONTENT_IOS)
-        }else{
-            _acd.ref.find(SELECTOR_ACCORDION_LIST_ITEM_CONTENT).addClass(CLASS_ACCORDION_LIST_ITEM_CONTENT_ANDROID)
-        }
     };
 
     //绑定事件
@@ -90,6 +85,12 @@
                 opts.toggleClose && _acd.accordionClose(expandedItem);
                 _acd.ref.trigger('toggle', [item, item.hasClass(CLASS_ACCORDION_LIST_ITEM_EXPANDED)]);
             };
+            _acd.ref.trigger('open', [item]);
+            if ($.os.ios) {
+                item.children(SELECTOR_ACCORDION_LIST_ITEM_CONTENT).addClass(CLASS_ACCORDION_LIST_ITEM_CONTENT_IOS)
+            } else {
+                item.children(SELECTOR_ACCORDION_LIST_ITEM_CONTENT).addClass(CLASS_ACCORDION_LIST_ITEM_CONTENT_ANDROID)
+            }
             content.css('height', content[0].scrollHeight + 'px').transitionEnd(function() {
                 content.transition(0);
                 content.css('height', 'auto');
@@ -97,7 +98,6 @@
                 content.transition('');
                 _acd.ref.trigger('opened', [item]);
             });
-            _acd.ref.trigger('open', [item]);
             item.addClass(CLASS_ACCORDION_LIST_ITEM_EXPANDED)
             $(item.children()[0]).addClass(CLASS_ACCORDION_LIST_ITEM_LINK_EXPANDED).addClass(CLASS_ACTIVE);
         };
@@ -150,4 +150,4 @@
         };
     */
     });
-})();
+})(Zepto);

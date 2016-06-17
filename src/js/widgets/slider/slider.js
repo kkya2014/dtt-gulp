@@ -2,7 +2,7 @@
  * @file 图片轮播组件
  */
 ;
-(function() {
+(function($) {
 
     var cssPrefix = $.fx.cssPrefix,
         transitionEnd = $.fx.transitionEnd;
@@ -519,4 +519,4 @@
 
     });
 
-})();
+})(Zepto);

@@ -1,7 +1,7 @@
 /**
  * @file lazyLoadImage组件
  */
-;(function() {
+;(function($) {
     var imagesSequence = [];
     var imageIsLoading = false;
     var CLASS_LAZY = 'ui-lazy';
@@ -126,4 +126,4 @@
         };
     */
     });
-})();
+})(Zepto);

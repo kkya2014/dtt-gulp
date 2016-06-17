@@ -237,4 +237,4 @@
         };
 
     });
-})($, window);
+})(Zepto, window);

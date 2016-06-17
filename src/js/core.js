@@ -210,4 +210,4 @@
 	global.define = define;
 	
 	global.d6 = d6;
-})(this, $);
+})(this, Zepto);
